@@ -2,8 +2,6 @@ import http from 'node:http';
 import { json } from './middlewares/json.js';
 import { Database } from './database.js';
 
-const users = [];
-
 const database = new Database();
 
 const server = http.createServer(async (req, res) => {
@@ -26,7 +24,7 @@ const server = http.createServer(async (req, res) => {
       email,
     };
 
-    database.insert('users', user);
+    database.insert('users', users);
 
     return res.writeHead(201).end();
   }
