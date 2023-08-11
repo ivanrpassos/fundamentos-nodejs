@@ -1,5 +1,3 @@
-// /users/:id
-
 export function buildRoutePath(path) {
   const routeParametersRegex = /:([a-zA-Z]+)/g;
   const pathWithParams = path.replaceAll(
@@ -7,7 +5,9 @@ export function buildRoutePath(path) {
     '(?<$1>[a-z0-9-_]+)',
   );
 
-  const pathRegex = new RegExp(`^${pathWithParams}`);
+  const pathRegex = new RegExp(
+    `^${pathWithParams}(?<query>\\?(.*))?$`,
+  );
 
   return pathRegex;
 }
